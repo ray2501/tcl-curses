@@ -7,7 +7,7 @@ Name:          tcl-curses
 Summary:       A "minimalist" tcl package for interfacing to curses
 Version:       0.8.0
 Release:       0
-License:       Tcl
+License:       TCL
 Group:         Development/Libraries/Tcl
 Source:        %{name}-%{version}.tar.gz
 URL:           https://github.com/ray2501/tcl-curses
