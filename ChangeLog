@@ -1,3 +1,8 @@
+2023-12-13  Danilo Chang
+
+    * Bump version to 0.8.1
+    * Update tclconfig files
+
 2018-04-14  Danilo Chang
 
     * Dump sample extension and update

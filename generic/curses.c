@@ -89,7 +89,7 @@ extern DLLEXPORT int    Curses_Init(Tcl_Interp * interp);
      if (Tcl_PkgRequire(interp, "Tcl", "8.4", 0) == NULL) {
         return TCL_ERROR;
      }
-     if (Tcl_PkgProvide(interp, "curses", "0.8.0") == TCL_ERROR) {
+     if (Tcl_PkgProvide(interp, "curses", "0.8.1") == TCL_ERROR) {
          return TCL_ERROR;
      }
      
