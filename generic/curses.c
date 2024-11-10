@@ -83,12 +83,10 @@ extern DLLEXPORT int    Curses_Init(Tcl_Interp * interp);
  Curses_Init (interp)
      Tcl_Interp *interp;                /* Interpreter for application */
  {
-     if (Tcl_InitStubs(interp, "8.4", 0) == NULL) {
+     if (Tcl_InitStubs(interp, TCL_VERSION, 0) == NULL) {
         return TCL_ERROR;
      }
-     if (Tcl_PkgRequire(interp, "Tcl", "8.4", 0) == NULL) {
-        return TCL_ERROR;
-     }
+
      if (Tcl_PkgProvide(interp, "curses", "0.8.1") == TCL_ERROR) {
          return TCL_ERROR;
      }
@@ -122,16 +120,13 @@ extern DLLEXPORT int    Curses_Init(Tcl_Interp * interp);
  
  #define MAX_ERROR_SIZE   1024
  
- static int 
- setTclError TCL_VARARGS_DEF (
-     Tcl_Interp *,
-     i)
+ static int setTclError (Tcl_Interp *interp, ...)
  {
      va_list argList;
      char buf[MAX_ERROR_SIZE];
      char *format;
-     
-     Tcl_Interp *interp = TCL_VARARGS_START(Tcl_Interp *, i, argList);
+
+     va_start(argList, interp);
      format = va_arg(argList, char *);
      vsnprintf(buf, MAX_ERROR_SIZE, format, argList);
      buf[MAX_ERROR_SIZE-1] = '\0';
@@ -245,7 +240,7 @@ extern DLLEXPORT int    Curses_Init(Tcl_Interp * interp);
             int on, index, attr;
             int number;
             char *attrs = NULL;
-            int len;
+            Tcl_Size len;
     
             if (objc != 4 && objc != 5) {
                 Tcl_WrongNumArgs(interp, 2, objv, "boolean attribute ?number?");
